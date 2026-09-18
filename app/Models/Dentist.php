@@ -2,16 +2,23 @@
 
 require_once __DIR__ . '/DentalClinicUser.php';
 
-
-class Dentis extends DentalClinicUser
+class Dentist extends DentalClinicUser
 {
-    protected string $specialization;
-    protected string $licenseNo;
+    private string $specialization;
+    private string $licenseNo;
 
-
-    public function __construct(string $userId, string $name, string $contactNum, string $specialization, string $licenseNo)
-    {
-        parent::__construct($userId, $name, $contactNum);
+    public function __construct(
+        string $userId,
+        string $name,
+        string $contactNumber,
+        string $specialization,
+        string $licenseNo
+    ) {
+        parent::__construct(
+            $userId,
+            $name,
+            $contactNumber
+        );
 
         $this->specialization = $specialization;
         $this->licenseNo = $licenseNo;
