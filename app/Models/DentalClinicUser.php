@@ -1,34 +1,33 @@
 <?php
 
-
 class DentalClinicUser
 {
-    protected function DentalClinicUser 
+    protected string $name;
+    protected string $contactNumber;
+    private string $userId;
+
+    public function __construct(
+        string $userId,
+        string $name,
+        string $contactNumber
+    ) {
+        $this->userId = $userId;
+        $this->name = $name;
+        $this->contactNumber = $contactNumber;
+    }
+
+    public function getName(): string
     {
-        protected string $name,
-        protected string $contactNum,
-        private string $userId,
+        return $this->name;
+    }
 
-        public function __construct( string $userId, string $contactNum, string $name) 
-        {
-          $this->userId = $userId;
-          $this->name = $name;
-          $this->contactNumber = $contactNum;
-        }
+    public function getContactNumber(): string
+    {
+        return $this->contactNumber;
+    }
 
-        public function getName(): string 
-        {
-            return $this->name;
-        }
-
-        public function getContactNumber(): string 
-        {
-            return $this->contactNumber;
-        }
-
-        public function getRoleDescription(): string 
-        {
-            return "General dental clinic user";
-        }
+    public function getRoleDescription(): string
+    {
+        return "General dental clinic user";
     }
 }
