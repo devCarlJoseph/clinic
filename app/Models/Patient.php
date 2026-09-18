@@ -7,17 +7,25 @@ class Patient extends DentalClinicUser
     private string $patientNo;
     private string $dentalConcern;
 
-    public function __construct(string $userId, string $name, string $contactNum, string $patientNo, string $dentalConcern)
-    {
-        parent::__construct($userId, $name, $contactNum);
+    public function __construct(
+        string $userId,
+        string $name,
+        string $contactNumber,
+        string $patientNo,
+        string $dentalConcern
+    ) {
+        parent::__construct(
+            $userId,
+            $name,
+            $contactNumber
+        );
 
         $this->patientNo = $patientNo;
         $this->dentalConcern = $dentalConcern;
     }
 
-
-    public function getRoleDescription(): string 
+    public function getRoleDescription(): string
     {
-        return "Patient - receives dental consultation and services";
+        return "Patient - receives dental consultation and services.";
     }
 }
