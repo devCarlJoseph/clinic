@@ -1,3 +1,4 @@
-<?php
+</div>
 
-echo "this is my footer";
+</body>
+</html>
