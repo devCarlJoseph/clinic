@@ -13,21 +13,18 @@ $activeTab = $activeTab ?? 'users';
 $activeRole = $activeRole ?? 'all';
 ?>
 
-<!-- Alert Feedback for Figure 10 (Validation / Error Output) -->
 <?php if (!empty($alert)): ?>
     <div class="alert alert-<?= htmlspecialchars($alert['type']) ?>">
         <?= htmlspecialchars($alert['message']) ?>
     </div>
 <?php endif; ?>
 
-<!-- TAB 1: USERS DIRECTORY (Figures 3, 4, 5, 8) -->
 <?php if ($activeTab === 'users'): ?>
     <section class="page-header">
         <h1>Clinic Directory &amp; Records</h1>
         <p>PHP OOP Implementation: Parent DentalClinicUser with Patient, Dentist, and Receptionist subclasses.</p>
     </section>
 
-    <!-- Filter Navigation & Reset -->
     <div class="filter-bar">
         <a href="index.php?tab=users&role=all" class="filter-btn <?= ($activeRole === 'all') ? 'active' : '' ?>">All Users</a>
         <a href="index.php?tab=users&role=dentist" class="filter-btn <?= ($activeRole === 'dentist') ? 'active' : '' ?>">Dentists</a>
@@ -36,7 +33,6 @@ $activeRole = $activeRole ?? 'all';
         <a href="index.php?tab=users&action=reset" class="filter-btn" style="margin-left: auto; color: #ef4444; border-color: #fca5a5;">Reset Sample Data</a>
     </div>
 
-    <!-- User Cards (Figure 8 - System Output / Records) -->
     <div class="grid">
         <?php foreach ($dentalUsers as $user): ?>
             <div class="card">
@@ -53,13 +49,11 @@ $activeRole = $activeRole ?? 'all';
                         <strong>Contact:</strong> <?= htmlspecialchars($user->getContactNumber()) ?>
                     </p>
 
-                    <!-- Polymorphic Method: getRoleDescription() -->
                     <p class="role-desc">
                         <?= htmlspecialchars($user->getRoleDescription()) ?>
                     </p>
                 </div>
 
-                <!-- Subclass-specific properties demonstrated via getters -->
                 <div class="details-box">
                     <?php if ($user instanceof Patient): ?>
                         <div class="details-row">
@@ -94,8 +88,6 @@ $activeRole = $activeRole ?? 'all';
         <?php endforeach; ?>
     </div>
 
-    <!-- Registration Forms (Figures 4 & 5) -->
-    <!-- Notice: required attributes are omitted so empty inputs hit PHP validation directly for Figure 10 -->
     <section class="form-section">
         <h2>Register Clinic Member</h2>
         <form action="index.php?tab=users" method="POST">
@@ -122,7 +114,6 @@ $activeRole = $activeRole ?? 'all';
                 </div>
             </div>
 
-            <!-- Figure 4: Patient Input Form Fields -->
             <div class="form-grid" id="patient-fields">
                 <div class="form-group">
                     <label>Patient Number</label>
@@ -134,7 +125,6 @@ $activeRole = $activeRole ?? 'all';
                 </div>
             </div>
 
-            <!-- Figure 5: Dentist Input Form Fields -->
             <div class="form-grid" id="dentist-fields" style="display: none;">
                 <div class="form-group">
                     <label>Specialization</label>
@@ -146,7 +136,6 @@ $activeRole = $activeRole ?? 'all';
                 </div>
             </div>
 
-            <!-- Receptionist Input Form Fields -->
             <div class="form-grid" id="receptionist-fields" style="display: none;">
                 <div class="form-group">
                     <label>Employee Number</label>
@@ -162,14 +151,12 @@ $activeRole = $activeRole ?? 'all';
         </form>
     </section>
 
-<!-- TAB 2: DENTAL APPOINTMENT MANAGEMENT (Figure 6 & Test Case 5) -->
 <?php elseif ($activeTab === 'appointments'): ?>
     <section class="page-header">
         <h1>Dental Appointment Management</h1>
         <p>Processes appointments between registered Patients and Dentists (Demonstrating Object Association).</p>
     </section>
 
-    <!-- Appointments Table (Figure 8 - Processed Records) -->
     <table class="data-table">
         <thead>
             <tr>
@@ -199,7 +186,6 @@ $activeRole = $activeRole ?? 'all';
         </tbody>
     </table>
 
-    <!-- Figure 6: Dental Appointment Form -->
     <section class="form-section">
         <h2>Schedule an Appointment</h2>
         <form action="index.php?tab=appointments" method="POST">
@@ -257,7 +243,6 @@ $activeRole = $activeRole ?? 'all';
         </form>
     </section>
 
-<!-- TAB 3: DENTAL SERVICE MANAGEMENT (Figure 7) -->
 <?php elseif ($activeTab === 'services'): ?>
     <section class="page-header">
         <h1>Dental Service Catalog</h1>
