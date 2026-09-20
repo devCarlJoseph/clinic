@@ -11,8 +11,25 @@ class UserController
         $this->dentalClinicService = new DentalClinicService();
     }
 
-    public function index(): array
+    public function handleRequest(): void
     {
-        return $this->dentalClinicService->getDentalClinicUsers();
+        if (isset($_GET['action']) && $_GET['action'] === 'reset') {
+            $this->dentalClinicService->resetToDefault();
+            header("Location: index.php");
+            exit;
+        }
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'create_user') {
+            $this->dentalClinicService->addUser($_POST);
+            header("Location: index.php?role=" . urlencode($_POST['role'] ?? 'all'));
+            exit;
+        }
+
+        $activeRole = $_GET['role'] ?? 'all';
+        $dentalUsers = $this->dentalClinicService->getDentalClinicUsers($activeRole);
+
+        include __DIR__ . '/../../views/layouts/header.php';
+        include __DIR__ . '/../../views/users/index.php';
+        include __DIR__ . '/../../views/layouts/footer.php';
     }
 }
