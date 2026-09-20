@@ -29,7 +29,6 @@ class Patient extends DentalClinicUser
         return $this->dentalConcern;
     }
 
-    // Overridden method as documented in Section 9
     public function getRoleDescription(): string
     {
         return "Patient - receives dental consultation and services.";

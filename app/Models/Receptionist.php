@@ -1,14 +1,20 @@
 <?php
 
+require_once __DIR__ . '/DentalClinicUser.php';
+
 class Receptionist extends DentalClinicUser
 {
-    protected string $employeeNo;
-    protected string $shift;
+    private string $employeeNo;
+    private string $shift;
 
-    public function __construct(string $userId, string $name, string $contactNum, string $employeeNo, string $shift)
-    {
-        parent::__construct($userId, $name, $contactNum);
-
+    public function __construct(
+        string $userId,
+        string $name,
+        string $contactNumber,
+        string $employeeNo,
+        string $shift
+    ) {
+        parent::__construct($userId, $name, $contactNumber);
         $this->employeeNo = $employeeNo;
         $this->shift = $shift;
     }
@@ -18,26 +24,18 @@ class Receptionist extends DentalClinicUser
         return $this->employeeNo;
     }
 
-    public function getShift(): string 
+    public function getShift(): string
     {
         return $this->shift;
     }
 
-    public function getRoleDescription(): string 
+    public function getRoleDescription(): string
     {
-        return "Manages appointment bookings, patient registrations, and front-desk reception.";
+        return "Receptionist - handles registration and appointment assistance.";
     }
 
     public function getRoleBadge(): string
     {
         return "Receptionist";
-    }
-
-    public function getAdditionalDetails(): array
-    {
-        return [
-            "Employee No" => $this->employeeNo,
-            "Assigned Shift" => $this->shift
-        ];
     }
 }
