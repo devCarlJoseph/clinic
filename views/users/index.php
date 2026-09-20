@@ -33,7 +33,7 @@ $activeRole = $activeRole ?? 'all';
         <a href="index.php?tab=users&role=dentist" class="filter-btn <?= ($activeRole === 'dentist') ? 'active' : '' ?>">Dentists</a>
         <a href="index.php?tab=users&role=patient" class="filter-btn <?= ($activeRole === 'patient') ? 'active' : '' ?>">Patients</a>
         <a href="index.php?tab=users&role=receptionist" class="filter-btn <?= ($activeRole === 'receptionist') ? 'active' : '' ?>">Receptionists</a>
-        <a href="index.php?action=reset" class="filter-btn" style="margin-left: auto; color: #ef4444; border-color: #fca5a5;">Reset Sample Data</a>
+        <a href="index.php?tab=users&action=reset" class="filter-btn" style="margin-left: auto; color: #ef4444; border-color: #fca5a5;">Reset Sample Data</a>
     </div>
 
     <!-- User Cards (Figure 8 - System Output / Records) -->
