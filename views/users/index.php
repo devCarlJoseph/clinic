@@ -1,3 +1,12 @@
+<?php
+/**
+ * @var string $activeRole
+ * @var DentalClinicUser[] $dentalUsers
+ */
+$activeRole = $activeRole ?? 'all';
+$dentalUsers = $dentalUsers ?? [];
+?>
+
 <section class="page-header">
     <h1>Clinic Personnel &amp; Patients Directory</h1>
     <p>Demonstrating Polymorphism and Inheritance through unified base objects with specialized behaviors.</p>
@@ -9,7 +18,7 @@
     <a href="index.php?role=dentist" class="filter-btn <?= ($activeRole === 'dentist') ? 'active' : '' ?>">Dentists</a>
     <a href="index.php?role=patient" class="filter-btn <?= ($activeRole === 'patient') ? 'active' : '' ?>">Patients</a>
     <a href="index.php?role=receptionist" class="filter-btn <?= ($activeRole === 'receptionist') ? 'active' : '' ?>">Receptionists</a>
-    <a href="index.php?action=reset" class="filter-btn" style="margin-left: auto; color: #ef4444; border-color: #fca5a5;">↺ Reset Sample Data</a>
+    <a href="index.php?action=reset" class="filter-btn" style="margin-left: auto; color: #ef4444; border-color: #fca5a5;">Reset Sample Data</a>
 </div>
 
 <!-- Users Grid -->
@@ -29,17 +38,19 @@
 
                     <!-- Inherited Methods -->
                     <h3><?= htmlspecialchars($user->getName()) ?></h3>
+                    
+                    <!-- Contact Information -->
                     <p style="font-size: 0.85rem; color: #475569; margin-bottom: 8px;">
-                        📞 <?= htmlspecialchars($user->getContactNumber()) ?>
+                        <strong>Contact:</strong> <?= htmlspecialchars($user->getContactNumber()) ?>
                     </p>
 
-                    <!-- Polymorphic Method: Each subclass renders its own description -->
+                    <!-- Polymorphic Method -->
                     <p class="role-desc">
                         <?= htmlspecialchars($user->getRoleDescription()) ?>
                     </p>
                 </div>
 
-                <!-- Polymorphic Method: Each subclass returns its specialized key-value pairs -->
+                <!-- Polymorphic Role-Specific Details -->
                 <div class="details-box">
                     <?php foreach ($user->getAdditionalDetails() as $label => $value): ?>
                         <div class="details-row">
@@ -55,7 +66,7 @@
 
 <!-- Add Member Form -->
 <section class="form-section">
-    <h2>➕ Add Clinic Member (In-Memory)</h2>
+    <h2>Add Clinic Member (In-Memory)</h2>
     <form action="index.php" method="POST">
         <input type="hidden" name="action" value="create_user">
 
