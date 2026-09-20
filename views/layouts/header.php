@@ -47,17 +47,36 @@
             font-size: 1.25rem;
             font-weight: 700;
             color: var(--primary);
-            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 16px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 0.9rem;
+            padding: 6px 12px;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+
+        .nav-links a.active, .nav-links a:hover {
+            color: var(--primary);
+            background: #f0f9ff;
         }
 
         .container {
             max-width: 1120px;
-            margin: 40px auto;
+            margin: 32px auto;
             padding: 0 20px;
         }
 
         .page-header {
-            margin-bottom: 32px;
+            margin-bottom: 24px;
         }
 
         .page-header h1 {
@@ -69,6 +88,25 @@
         .page-header p {
             color: var(--text-muted);
             margin-top: 4px;
+        }
+
+        /* Alerts for Figure 10 (Validation / Error Output) */
+        .alert {
+            padding: 14px 18px;
+            border-radius: 8px;
+            margin-bottom: 24px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        .alert-error {
+            background: #fef2f2;
+            color: #dc2626;
+            border: 1px solid #fecaca;
+        }
+        .alert-success {
+            background: #f0fdf4;
+            color: #16a34a;
+            border: 1px solid #bbf7d0;
         }
 
         .filter-bar {
@@ -101,7 +139,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
             gap: 24px;
-            margin-bottom: 48px;
+            margin-bottom: 40px;
         }
 
         .card {
@@ -172,12 +210,13 @@
             color: var(--text-dark);
         }
 
+        /* Form styling */
         .form-section {
             background: #ffffff;
             border-radius: 12px;
             border: 1px solid var(--border);
             padding: 28px;
-            margin-top: 32px;
+            margin-top: 24px;
         }
 
         .form-section h2 {
@@ -187,7 +226,7 @@
 
         .form-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 16px;
             margin-bottom: 16px;
         }
@@ -221,15 +260,44 @@
         .btn-submit:hover {
             background: var(--primary-dark);
         }
+
+        /* Table styling for System Outputs (Figure 8) */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            margin-bottom: 32px;
+        }
+
+        .data-table th, .data-table td {
+            padding: 14px 18px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.9rem;
+        }
+
+        .data-table th {
+            background: #f8fafc;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
     </style>
 </head>
 <body>
 
 <header class="navbar">
     <div class="brand">
-        DentalClinic
+        Dental Clinic Management System
     </div>
-    <span style="font-size: 0.85rem; color: #64748b;">OOP 2 Midterm Project</span>
+    <nav class="nav-links">
+        <a href="index.php?tab=users" class="<?= ($activeTab === 'users') ? 'active' : '' ?>">Personnel &amp; Patients</a>
+        <a href="index.php?tab=appointments" class="<?= ($activeTab === 'appointments') ? 'active' : '' ?>">Appointments</a>
+        <a href="index.php?tab=services" class="<?= ($activeTab === 'services') ? 'active' : '' ?>">Services Catalog</a>
+        <a href="index.php?tab=polymorphism" class="<?= ($activeTab === 'polymorphism') ? 'active' : '' ?>">Polymorphism Test</a>
+    </nav>
 </header>
 
 <main class="container">
