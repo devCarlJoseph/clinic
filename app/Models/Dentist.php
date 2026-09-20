@@ -24,8 +24,31 @@ class Dentist extends DentalClinicUser
         $this->licenseNo = $licenseNo;
     }
 
+    public function getLicenseNo(): string 
+    {
+        return $this->licenseNo;
+    }
+
+    public function getSpecialization(): string
+    {
+        return $this->specialization;
+    }
+
     public function getRoleDescription(): string
     {
-        return "Dentist - provides dental consultation and treatment.";
+        return "Provides expert dental consultation, diagnosis, and surgical treatments..";
+    }
+
+    public function getRoleBadge(): string
+    {
+        return "Dentist";
+    }
+
+    public function getAdditionalDeatails(): array
+    {
+        return [
+            'License No.' =>  $this->licenseNo,
+            'Specialization' => $this->specialization
+        ];
     }
 }
