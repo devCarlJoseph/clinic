@@ -63,7 +63,6 @@ class DentalClinicService
         $name = trim($data['name'] ?? '');
         $contact = trim($data['contact'] ?? '');
 
-        // Validation for Figure 10
         if (empty($name) || empty($contact) || empty($role)) {
             return ['success' => false, 'message' => 'Please fill in all required user fields (Name, Contact, and Role).'];
         }
