@@ -44,7 +44,7 @@ class Dentist extends DentalClinicUser
         return "Dentist";
     }
 
-    public function getAdditionalDeatails(): array
+    public function getAdditionalDetails(): array
     {
         return [
             'License No.' =>  $this->licenseNo,

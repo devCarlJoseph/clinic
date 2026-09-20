@@ -1,6 +1,6 @@
 <?php
 
-class DentalClinicUser
+abstract class DentalClinicUser
 {
     protected string $name;
     protected string $contactNumber;

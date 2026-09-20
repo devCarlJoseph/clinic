@@ -24,8 +24,31 @@ class Patient extends DentalClinicUser
         $this->dentalConcern = $dentalConcern;
     }
 
+    public function getPatienNo(): string 
+    {
+        return $this->patientNo;
+    }
+
+    public function getDentalConcern(): string
+    {
+        return $this->dentalConcern;
+    }
+
     public function getRoleDescription(): string
     {
-        return "Patient - receives dental consultation and services.";
+        return "Receives regular dental checkups, cleaning, and procedural treatments.";
+    }
+
+    public function getRoleBadge(): string 
+    {
+        return "Patient";
+    }
+
+    public function getAdditionalDetails(): array
+    {
+        return [
+            "Patient No" => $this->patientNo,
+            "Dental Concern" => $this->dentalConcern
+        ];
     }
 }
