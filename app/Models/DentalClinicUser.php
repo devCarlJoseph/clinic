@@ -16,6 +16,11 @@ class DentalClinicUser
         $this->contactNumber = $contactNumber;
     }
 
+    public function getUserId(): string
+    {
+        return $this->userId;
+    }
+
     public function getName(): string
     {
         return $this->name;
@@ -26,8 +31,7 @@ class DentalClinicUser
         return $this->contactNumber;
     }
 
-    public function getRoleDescription(): string
-    {
-        return "General dental clinic user";
-    }
+    abstract public function getRoleDescription(): string;
+    abstract public function getRoleBadge(): string;
+    abstract public function getAdditionalDetails(): array;
 }
