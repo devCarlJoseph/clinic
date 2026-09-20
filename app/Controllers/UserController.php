@@ -15,34 +15,30 @@ class UserController
     {
         $alert = null;
 
+        // Reset Action: execute immediately and set success alert (no header redirect needed)
         if (isset($_GET['action']) && $_GET['action'] === 'reset') {
             $this->service->resetToDefault();
-            header("Location: index.php?tab=users");
-            exit;
+            $alert = ['type' => 'success', 'message' => 'Sample data has been successfully reset to default records.'];
         }
 
+        // Form Submission: Add Member
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'create_user') {
             $result = $this->service->addUser($_POST);
             if ($result['success']) {
-                header("Location: index.php?tab=users&success=" . urlencode($result['message']));
-                exit;
+                $alert = ['type' => 'success', 'message' => $result['message']];
             } else {
                 $alert = ['type' => 'error', 'message' => $result['message']];
             }
         }
 
+        // Form Submission: Book Appointment
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'create_appointment') {
             $result = $this->service->addAppointment($_POST);
             if ($result['success']) {
-                header("Location: index.php?tab=appointments&success=" . urlencode($result['message']));
-                exit;
+                $alert = ['type' => 'success', 'message' => $result['message']];
             } else {
                 $alert = ['type' => 'error', 'message' => $result['message']];
             }
-        }
-
-        if (isset($_GET['success'])) {
-            $alert = ['type' => 'success', 'message' => $_GET['success']];
         }
 
         $activeTab = $_GET['tab'] ?? 'users';
