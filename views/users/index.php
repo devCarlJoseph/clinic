@@ -95,15 +95,16 @@ $activeRole = $activeRole ?? 'all';
     </div>
 
     <!-- Registration Forms (Figures 4 & 5) -->
+    <!-- Notice: required attributes are omitted so empty inputs hit PHP validation directly for Figure 10 -->
     <section class="form-section">
         <h2>Register Clinic Member</h2>
-        <form action="index.php" method="POST">
+        <form action="index.php?tab=users" method="POST">
             <input type="hidden" name="action" value="create_user">
 
             <div class="form-grid">
                 <div class="form-group">
                     <label for="role">User Role</label>
-                    <select name="role" id="role" required onchange="toggleRoleFields(this.value)">
+                    <select name="role" id="role" onchange="toggleRoleFields(this.value)">
                         <option value="patient">Patient</option>
                         <option value="dentist">Dentist</option>
                         <option value="receptionist">Receptionist</option>
@@ -112,12 +113,12 @@ $activeRole = $activeRole ?? 'all';
 
                 <div class="form-group">
                     <label for="name">Full Name</label>
-                    <input type="text" name="name" id="name" required placeholder="e.g. Maria Clara">
+                    <input type="text" name="name" id="name" placeholder="e.g. Maria Clara">
                 </div>
 
                 <div class="form-group">
                     <label for="contact">Contact Number</label>
-                    <input type="text" name="contact" id="contact" required placeholder="e.g. 0917-123-4567">
+                    <input type="text" name="contact" id="contact" placeholder="e.g. 0917-123-4567">
                 </div>
             </div>
 
@@ -201,13 +202,13 @@ $activeRole = $activeRole ?? 'all';
     <!-- Figure 6: Dental Appointment Form -->
     <section class="form-section">
         <h2>Schedule an Appointment</h2>
-        <form action="index.php" method="POST">
+        <form action="index.php?tab=appointments" method="POST">
             <input type="hidden" name="action" value="create_appointment">
 
             <div class="form-grid">
                 <div class="form-group">
                     <label for="patient_id">Select Patient</label>
-                    <select name="patient_id" id="patient_id" required>
+                    <select name="patient_id" id="patient_id">
                         <option value="">-- Choose Registered Patient --</option>
                         <?php foreach ($allPatients as $pat): ?>
                             <option value="<?= htmlspecialchars($pat->getUserId()) ?>">
@@ -219,7 +220,7 @@ $activeRole = $activeRole ?? 'all';
 
                 <div class="form-group">
                     <label for="dentist_id">Select Dentist</label>
-                    <select name="dentist_id" id="dentist_id" required>
+                    <select name="dentist_id" id="dentist_id">
                         <option value="">-- Choose Available Dentist --</option>
                         <?php foreach ($allDentists as $den): ?>
                             <option value="<?= htmlspecialchars($den->getUserId()) ?>">
@@ -231,7 +232,7 @@ $activeRole = $activeRole ?? 'all';
 
                 <div class="form-group">
                     <label for="service">Select Dental Service</label>
-                    <select name="service" id="service" required>
+                    <select name="service" id="service">
                         <option value="">-- Choose Service --</option>
                         <?php foreach ($servicesList as $srv): ?>
                             <option value="<?= htmlspecialchars($srv['name']) ?>">
@@ -243,12 +244,12 @@ $activeRole = $activeRole ?? 'all';
 
                 <div class="form-group">
                     <label for="date">Appointment Date</label>
-                    <input type="date" name="date" id="date" required value="<?= date('Y-m-d') ?>">
+                    <input type="date" name="date" id="date">
                 </div>
 
                 <div class="form-group">
                     <label for="time">Appointment Time</label>
-                    <input type="time" name="time" id="time" required value="09:00">
+                    <input type="time" name="time" id="time">
                 </div>
             </div>
 
@@ -281,30 +282,6 @@ $activeRole = $activeRole ?? 'all';
                 </div>
             </div>
         <?php endforeach; ?>
-    </div>
-
-<!-- TAB 4: POLYMORPHISM TEST OUTPUT (Figure 2 & Figure 9) -->
-<?php elseif ($activeTab === 'polymorphism'): ?>
-    <section class="page-header">
-        <h1>Polymorphism Demonstration Output</h1>
-        <p>Direct execution of <code>$user->getRoleDescription()</code> inside a polymorphic loop (Document Section 9 &amp; 11.5).</p>
-    </section>
-
-    <div class="card" style="margin-bottom: 24px;">
-        <h3 style="margin-bottom: 12px;">Live Execution Result</h3>
-        <p style="color: #64748b; font-size: 0.9rem; margin-bottom: 16px;">
-            The same method call <code>getRoleDescription()</code> produces different role-specific behaviors at runtime based on the actual object:
-        </p>
-
-        <div style="background: #0f172a; color: #38bdf8; padding: 20px; border-radius: 8px; font-family: monospace; font-size: 0.95rem; line-height: 1.8;">
-            <?php foreach ($dentalUsers as $user): ?>
-                <div>
-                    <span style="color: #94a3b8;">[<?= htmlspecialchars(get_class($user)) ?>]</span>
-                    <span style="color: #f8fafc; font-weight: bold;"><?= htmlspecialchars($user->getName()) ?></span>:
-                    <span style="color: #34d399;">"<?= htmlspecialchars($user->getRoleDescription()) ?>"</span>
-                </div>
-            <?php endforeach; ?>
-        </div>
     </div>
 <?php endif; ?>
 
