@@ -14,17 +14,12 @@ class Patient extends DentalClinicUser
         string $patientNo,
         string $dentalConcern
     ) {
-        parent::__construct(
-            $userId,
-            $name,
-            $contactNumber
-        );
-
+        parent::__construct($userId, $name, $contactNumber);
         $this->patientNo = $patientNo;
         $this->dentalConcern = $dentalConcern;
     }
 
-    public function getPatienNo(): string 
+    public function getPatientNo(): string
     {
         return $this->patientNo;
     }
@@ -34,21 +29,14 @@ class Patient extends DentalClinicUser
         return $this->dentalConcern;
     }
 
+    // Overridden method as documented in Section 9
     public function getRoleDescription(): string
     {
-        return "Receives regular dental checkups, cleaning, and procedural treatments.";
+        return "Patient - receives dental consultation and services.";
     }
 
-    public function getRoleBadge(): string 
+    public function getRoleBadge(): string
     {
         return "Patient";
-    }
-
-    public function getAdditionalDetails(): array
-    {
-        return [
-            "Patient No" => $this->patientNo,
-            "Dental Concern" => $this->dentalConcern
-        ];
     }
 }
