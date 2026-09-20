@@ -13,8 +13,31 @@ class Receptionist extends DentalClinicUser
         $this->shift = $shift;
     }
 
+    public function getEmployeeNo(): string
+    {
+        return $this->employeeNo;
+    }
+
+    public function getShift(): string 
+    {
+        return $this->shift;
+    }
+
     public function getRoleDescription(): string 
     {
-        return "Receptionist - handles registration and appointment assistance.";
+        return "Manages appointment bookings, patient registrations, and front-desk reception.";
+    }
+
+    public function getRoleBadge(): string
+    {
+        return "Receptionist";
+    }
+
+    public function getAdditionalDetails(): array
+    {
+        return [
+            "Employee No" => $this->employeeNo,
+            "Shift" => $this->shift
+        ];
     }
 }
