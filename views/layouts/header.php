@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,19 +19,6 @@
             --dentist-badge: #0d9488;
             --patient-badge: #3b82f6;
             --receptionist-badge: #8b5cf6;
-        }
-
-        .lucide {
-            width: 1rem;
-            height: 1rem;
-            display: inline-block;
-            vertical-align: middle;
-        }
-
-        .brand .lucide {
-            width: 1.5rem;
-            height: 1.5rem;
-            color: var(--primary);
         }
 
         * {
@@ -61,9 +47,7 @@
             font-size: 1.25rem;
             font-weight: 700;
             color: var(--primary);
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            letter-spacing: -0.5px;
         }
 
         .container {
@@ -107,8 +91,7 @@
             transition: all 0.2s;
         }
 
-        .filter-btn:hover,
-        .filter-btn.active {
+        .filter-btn:hover, .filter-btn.active {
             background: var(--primary);
             color: #ffffff;
             border-color: var(--primary);
@@ -126,7 +109,7 @@
             border-radius: 12px;
             border: 1px solid var(--border);
             padding: 24px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -148,20 +131,9 @@
             letter-spacing: 0.5px;
         }
 
-        .badge-dentist {
-            background: #ccfbf1;
-            color: var(--dentist-badge);
-        }
-
-        .badge-patient {
-            background: #dbeafe;
-            color: var(--patient-badge);
-        }
-
-        .badge-receptionist {
-            background: #ede9fe;
-            color: var(--receptionist-badge);
-        }
+        .badge-dentist { background: #ccfbf1; color: var(--dentist-badge); }
+        .badge-patient { background: #dbeafe; color: var(--patient-badge); }
+        .badge-receptionist { background: #ede9fe; color: var(--receptionist-badge); }
 
         .card h3 {
             font-size: 1.15rem;
@@ -227,8 +199,7 @@
             margin-bottom: 6px;
         }
 
-        .form-group input,
-        .form-group select {
+        .form-group input, .form-group select {
             width: 100%;
             padding: 9px 12px;
             border: 1px solid var(--border);
@@ -252,14 +223,13 @@
         }
     </style>
 </head>
-
 <body>
 
-    <header class="navbar">
-        <div class="brand">
-            🦷 DentalClinic Pro
-        </div>
-        <span style="font-size: 0.85rem; color: #64748b;">OOP MVC (In-Memory / No DB)</span>
-    </header>
+<header class="navbar">
+    <div class="brand">
+        DentalClinic
+    </div>
+    <span style="font-size: 0.85rem; color: #64748b;">OOP 2 Midterm Project</span>
+</header>
 
-    <main class="container">
+<main class="container">
