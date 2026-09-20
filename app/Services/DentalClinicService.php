@@ -144,12 +144,12 @@ class DentalClinicService
 
     public function resetToDefault(): void
     {
+        unset($_SESSION['dental_users']);
+        unset($_SESSION['appointments']);
         $p1 = new Patient("U001", "Carl Joseph Sumagang", "0917-123-4567", "P001", "Toothache");
         $d1 = new Dentist("U002", "Dr. James Ian Escabas", "0918-123-4567", "General Dentistry", "DMD-001");
         $r1 = new Receptionist("U003", "John Lourenz Dico", "0919-123-4567", "EMP-001", "Morning Shift");
-
         $_SESSION['dental_users'] = [$p1, $d1, $r1];
-
         $_SESSION['appointments'] = [
             new Appointment("APT-001", $p1, $d1, date('Y-m-d'), "10:00 AM", "Oral Prophylaxis (Cleaning)")
         ];
