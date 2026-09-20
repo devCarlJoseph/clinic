@@ -14,19 +14,9 @@ class Dentist extends DentalClinicUser
         string $specialization,
         string $licenseNo
     ) {
-        parent::__construct(
-            $userId,
-            $name,
-            $contactNumber
-        );
-
+        parent::__construct($userId, $name, $contactNumber);
         $this->specialization = $specialization;
         $this->licenseNo = $licenseNo;
-    }
-
-    public function getLicenseNo(): string 
-    {
-        return $this->licenseNo;
     }
 
     public function getSpecialization(): string
@@ -34,21 +24,19 @@ class Dentist extends DentalClinicUser
         return $this->specialization;
     }
 
+    public function getLicenseNo(): string
+    {
+        return $this->licenseNo;
+    }
+
+    // Overridden method as documented in Section 9
     public function getRoleDescription(): string
     {
-        return "Provides expert dental consultation, diagnosis, and surgical treatments..";
+        return "Dentist - provides dental consultation and treatment.";
     }
 
     public function getRoleBadge(): string
     {
         return "Dentist";
-    }
-
-    public function getAdditionalDetails(): array
-    {
-        return [
-            'License No.' =>  $this->licenseNo,
-            'Specialization' => $this->specialization
-        ];
     }
 }
