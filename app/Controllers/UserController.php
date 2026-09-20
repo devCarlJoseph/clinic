@@ -15,13 +15,11 @@ class UserController
     {
         $alert = null;
 
-        // Reset Action: execute immediately and set success alert (no header redirect needed)
         if (isset($_GET['action']) && $_GET['action'] === 'reset') {
             $this->service->resetToDefault();
             $alert = ['type' => 'success', 'message' => 'Sample data has been successfully reset to default records.'];
         }
 
-        // Form Submission: Add Member
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'create_user') {
             $result = $this->service->addUser($_POST);
             if ($result['success']) {
@@ -31,7 +29,6 @@ class UserController
             }
         }
 
-        // Form Submission: Book Appointment
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'create_appointment') {
             $result = $this->service->addAppointment($_POST);
             if ($result['success']) {
