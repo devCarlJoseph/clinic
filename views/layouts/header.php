@@ -92,21 +92,23 @@
 
         /* Alerts for Figure 10 (Validation / Error Output) */
         .alert {
-            padding: 14px 18px;
+            padding: 16px 20px;
             border-radius: 8px;
             margin-bottom: 24px;
-            font-size: 0.9rem;
-            font-weight: 500;
+            font-size: 0.95rem;
+            font-weight: 600;
         }
         .alert-error {
             background: #fef2f2;
             color: #dc2626;
-            border: 1px solid #fecaca;
+            border: 1px solid #f87171;
+            box-shadow: 0 1px 3px rgba(220, 38, 38, 0.1);
         }
         .alert-success {
             background: #f0fdf4;
             color: #16a34a;
-            border: 1px solid #bbf7d0;
+            border: 1px solid #86efac;
+            box-shadow: 0 1px 3px rgba(22, 163, 74, 0.1);
         }
 
         .filter-bar {
@@ -296,7 +298,6 @@
         <a href="index.php?tab=users" class="<?= ($activeTab === 'users') ? 'active' : '' ?>">Personnel &amp; Patients</a>
         <a href="index.php?tab=appointments" class="<?= ($activeTab === 'appointments') ? 'active' : '' ?>">Appointments</a>
         <a href="index.php?tab=services" class="<?= ($activeTab === 'services') ? 'active' : '' ?>">Services Catalog</a>
-        <a href="index.php?tab=polymorphism" class="<?= ($activeTab === 'polymorphism') ? 'active' : '' ?>">Polymorphism Test</a>
     </nav>
 </header>
 
