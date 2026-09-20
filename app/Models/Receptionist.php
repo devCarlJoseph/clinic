@@ -37,7 +37,7 @@ class Receptionist extends DentalClinicUser
     {
         return [
             "Employee No" => $this->employeeNo,
-            "Shift" => $this->shift
+            "Assigned Shift" => $this->shift
         ];
     }
 }
